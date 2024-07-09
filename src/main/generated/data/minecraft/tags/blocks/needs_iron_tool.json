@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "testing_mod:crystal_block",
+    "testing_mod:crystal_stairs",
+    "testing_mod:crystal_slab",
+    "testing_mod:crystal_wall",
+    "testing_mod:crystal_button"
+  ]
+}

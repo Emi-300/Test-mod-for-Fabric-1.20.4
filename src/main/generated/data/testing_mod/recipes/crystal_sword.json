@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "testing_mod:polished_crystal_shard"
+    },
+    "B": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "C": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "ABA",
+    "ACA"
+  ],
+  "result": {
+    "item": "testing_mod:crystal_sword"
+  }
+}

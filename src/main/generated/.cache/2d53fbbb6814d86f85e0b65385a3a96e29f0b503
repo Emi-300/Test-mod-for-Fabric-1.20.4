@@ -1,0 +1,5 @@
+// 1.20.4	2024-07-08T17:55:35.2617254	testing_mod/Tags for minecraft:block
+d809884921ef782c320565cb34d4546c4ebb8c0b data\minecraft\tags\blocks\walls.json
+93141b32d9f93274634868de70b77d8ce3133fa9 data\testing_mod\tags\blocks\vulnerable_to_magic.json
+ba40f9df6db08c269ba7396a4b801a92d72ce32a data\minecraft\tags\blocks\mineable\pickaxe.json
+ba40f9df6db08c269ba7396a4b801a92d72ce32a data\minecraft\tags\blocks\needs_iron_tool.json

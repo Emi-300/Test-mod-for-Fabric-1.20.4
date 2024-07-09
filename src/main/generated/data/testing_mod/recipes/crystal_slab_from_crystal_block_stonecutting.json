@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "testing_mod:crystal_block"
+  },
+  "result": "testing_mod:crystal_slab"
+}

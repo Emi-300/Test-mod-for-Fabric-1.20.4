@@ -1,0 +1,24 @@
+{
+  "item.testing_mod.crystal_shard": "Crystal Shard",
+  "item.testing_mod.polished_crystal_shard": "Polished Crystal Shard",
+  "item.testing_mod.crystal_sword": "Crystal Sword",
+
+  "tooltip.testing_mod.crystal_sword.tooltip": "A sword forged from the metals of hell\\n\u00A77and the magic of the end",
+
+  "itemgroup.test_group": "Test Item Group",
+
+
+
+
+  "block.testing_mod.crystal_block": "Crystal Block",
+  "block.testing_mod.crystal_stairs": "Crystal Stairs",
+  "block.testing_mod.crystal_slab": "Crystal Slab",
+  "block.testing_mod.crystal_wall": "Crystal Wall",
+  "block.testing_mod.crystal_button": "Crystal Button",
+
+
+
+
+  "sounds.testing_mod.crystal_sword_swing": "Crystal Sword Swings"
+
+}

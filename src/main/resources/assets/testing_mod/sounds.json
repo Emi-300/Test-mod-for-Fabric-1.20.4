@@ -1,0 +1,17 @@
+{
+  "crystal_sword_swing": {
+    "subtitle": "sounds.testing_mod.crystal_sword_swing",
+    "sounds": [
+      "testing_mod:crystal_sword_swing",
+      "testing_mod:crystal_sword_swing_2",
+      "testing_mod:crystal_sword_swing_3"
+    ]
+  },
+
+  "crystal_sword_summon": {
+    "subtitle": "sounds.testing_mod.crystal_sword_summon",
+    "sounds": [
+      "testing_mod:crystal_sword_summon"
+    ]
+  }
+}
