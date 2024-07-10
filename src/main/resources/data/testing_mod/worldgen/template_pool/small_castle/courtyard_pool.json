@@ -15,7 +15,7 @@
         // inside a calling piece, have the jigsaw block face inward and that there is enough space in
         // the calling piece's boundaries to spawn a smaller inner piece.
 
-        "location": "testing_mod:small_wall",
+        "location": "testing_mod:courtyard",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -27,7 +27,7 @@
       // this golden right side piece instead of the regular right side. Think of it like a lottery.
       "weight": 1,
       "element": {
-        "location": "testing_mod:small_tower",
+        "location": "testing_mod:small_gate",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
