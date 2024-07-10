@@ -7,7 +7,6 @@
   "biomes": "#testing_mod:has_structure/json_only_house_biomes",
   "step": "surface_structures",
   "terrain_adaptation": "beard_thin",
-  "start_jigsaw_name": "testing_mod:run_down_house_left_side",
   "start_height": {
     "absolute": 0
   },

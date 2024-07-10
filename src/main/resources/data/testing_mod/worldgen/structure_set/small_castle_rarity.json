@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "testing_mod:small_castle",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 105928574,
+    "frequency": 0.3,
+
+    "type": "random_spread",
+    "separation": 8,
+    "spacing": 32
+
+  }
+}

@@ -1,8 +1,8 @@
 {
   // More info on template pools can be found here: https://minecraft.gamepedia.com/Custom_world_generation#JSON_format_8
   // Yes, worldgen json files can have comments. Minecraft does "lenient" parsing of these json files.
-
-  "fallback": "testing_mod:small_castle/main_path_fallback_pool",
+  "name": "testing_mod:small_castle/main_path_fallback_pool",
+  "fallback": "minecraft:empty",
   "elements": [
     {
       "weight": 1,
@@ -15,26 +15,15 @@
         // inside a calling piece, have the jigsaw block face inward and that there is enough space in
         // the calling piece's boundaries to spawn a smaller inner piece.
 
-        "location": "testing_mod:main_path",
-        "processors": "minecraft:empty",
-        "projection": "rigid",
-        "element_type": "minecraft:single_pool_element"
-      }
-    },
-    {
-
-      // A second entry here means the starting piece's Jigsaw Block has a 50% chance of spawning
-      // this golden right side piece instead of the regular right side. Think of it like a lottery.
-      "weight": 1,
-      "element": {
         "location": "testing_mod:small_gate",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
-
-
     }
+
+
+
 
   ]
 }
