@@ -18,7 +18,7 @@
           // Also, heads up, the structure_tutorial:run_down_house_left_side piece has a Jigsaw Block
           // that is targeting this pool directly. Be sure to change that Jigsaw Block's target pool
           // to make this side pool spawn in your own mod.
-        "location": "testmod:run_down_house_right_side",
+        "location": "testing_mod:run_down_house_right_side",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -30,7 +30,7 @@
         // this golden right side piece instead of the regular right side. Think of it like a lottery.
       "weight": 1,
       "element": {
-        "location": "testmod:run_down_house_right_side_golden",
+        "location": "testing_mod:run_down_house_right_side_golden",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"

@@ -37,6 +37,7 @@ public class Testing_mod implements ModInitializer {
 			ModLootTableModifiers.modifyLootTables();
 			ModSounds.registerSounds();
 
+			TestingModStructures.registerStructureFeatures();
 
 
 	}
