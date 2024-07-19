@@ -5,6 +5,8 @@ import emi.testing_mod.item.ModItemGroups;
 import emi.testing_mod.item.ModItems;
 import emi.testing_mod.sound.ModSounds;
 import emi.testing_mod.util.ModLootTableModifiers;
+import emi.testing_mod.world.gen.ModFeatures;
+import emi.testing_mod.world.gen.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 
 
@@ -38,6 +40,9 @@ public class Testing_mod implements ModInitializer {
 			ModSounds.registerSounds();
 
 			TestingModStructures.registerStructureFeatures();
+			ModFeatures.RegisterModFeatures();
+
+		ModWorldGeneration.generateModWorldGen();
 
 
 	}

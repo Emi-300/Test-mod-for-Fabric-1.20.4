@@ -26,6 +26,9 @@
 		],
 		"client": [
 			"emi.testing_mod.TestingModClient"
+		],
+		"terrablender": [
+			"emi.testing_mod.world.biome.ModTerrablenderAPI"
 		]
 	},
 	"mixins": [
