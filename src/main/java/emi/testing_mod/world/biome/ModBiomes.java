@@ -9,6 +9,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registerable;
+import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
@@ -29,9 +30,14 @@ public class ModBiomes {
     public static final RegistryKey<Biome> CRYSTAL_GROWTHS = RegistryKey.of(RegistryKeys.BIOME,
             new Identifier(Testing_mod.MOD_ID, "crystal_growths_biome"));
 
+    public static final RegistryKey<Biome> CRYSTAL_GROWTHS_END = RegistryKey.of(RegistryKeys.BIOME,
+            new Identifier(Testing_mod.MOD_ID, "crystal_growths_end_biome"));
+
+
 
     public static void bootstrap(Registerable<Biome> context){
         context.register(CRYSTAL_GROWTHS, crystalGrove(context));
+        context.register(CRYSTAL_GROWTHS_END, crystalGroveEnd(context));
     }
 
     public static void globalOverworldGeneration(GenerationSettings.LookupBackedBuilder builder) {
@@ -87,4 +93,49 @@ public class ModBiomes {
                         .music(MusicType.createIngameMusic(RegistryEntry.of(SoundEvents.BLOCK_AMETHYST_BLOCK_CHIME))).build())
                 .build();
     }
+
+    public static Biome crystalGroveEnd(Registerable<Biome> context) {
+        SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
+        spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.ALLAY, 2, 3, 5));
+
+        //DefaultBiomeFeatures.addFarmAnimals(spawnBuilder);
+        DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
+
+        GenerationSettings.LookupBackedBuilder biomeBuilder =
+                new GenerationSettings.LookupBackedBuilder(context.getRegistryLookup(RegistryKeys.PLACED_FEATURE),
+                        context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
+
+        globalOverworldGeneration(biomeBuilder);
+        //DefaultBiomeFeatures.addMossyRocks(biomeBuilder);
+        DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
+        //DefaultBiomeFeatures.addExtraGoldOre(biomeBuilder);
+
+        //biomeBuilder.feature();
+
+        biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.CRYSTAL_GROWTH_PLACED_KEY);
+        //DefaultBiomeFeatures.addForestFlowers(biomeBuilder);
+        //DefaultBiomeFeatures.addLargeFerns(biomeBuilder);
+
+        DefaultBiomeFeatures.addDefaultMushrooms(biomeBuilder);
+        //DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
+
+
+        return new Biome.Builder()
+                .precipitation(false)
+                .downfall(0.4f)
+                .temperature(0.7f)
+                .generationSettings(biomeBuilder.build())
+                .spawnSettings(spawnBuilder.build())
+                .effects((new BiomeEffects.Builder())
+                        .waterColor(0xe82e3b)
+                        .waterFogColor(0xbf1b26)
+                        .skyColor(0x30c918)
+                        .grassColor(0x761C88)
+                        .foliageColor(0xd203fc)
+                        .fogColor(0x22a1e6)
+                        .moodSound(BiomeMoodSound.CAVE).build())
+                .build();
+    }
+
+
 }

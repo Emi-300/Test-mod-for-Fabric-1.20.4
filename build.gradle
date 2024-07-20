@@ -35,8 +35,9 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 
-	modImplementation 'com.github.glitchfiend:TerraBlender-fabric:1.20.4-3.3.0.12'
-	
+	modImplementation "com.github.glitchfiend:TerraBlender-fabric:${minecraft_version}-${terrablender_version}"
+
+
 }
 
 processResources {

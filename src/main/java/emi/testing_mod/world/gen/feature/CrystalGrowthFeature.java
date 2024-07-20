@@ -24,9 +24,7 @@ public class CrystalGrowthFeature extends Feature<DefaultFeatureConfig> {
         for(structureWorldAccess = context.getWorld(); structureWorldAccess.isAir(blockPos) && blockPos.getY() > structureWorldAccess.getBottomY() + 2; blockPos = blockPos.down()) {
         }
 
-        if (!structureWorldAccess.getBlockState(blockPos).isOf(Blocks.STONE)) {
-            return false;
-        } else {
+
             blockPos = blockPos.up(random.nextInt(4));
             int i = random.nextInt(4) + 7;
             int j = i / 4 + random.nextInt(2);
@@ -95,6 +93,6 @@ public class CrystalGrowthFeature extends Feature<DefaultFeatureConfig> {
             }
 
             return true;
-        }
+
     }
 }
