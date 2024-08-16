@@ -2,6 +2,7 @@ package emi.testing_mod.block;
 
 import emi.testing_mod.Testing_mod;
 import emi.testing_mod.block.custom.CrystalBlock;
+import emi.testing_mod.block.custom.LaserBlock;
 import net.fabricmc.fabric.api.block.v1.FabricBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
@@ -26,6 +27,8 @@ public class ModBlocks {
     public static final Block CRYSTAL_BUTTON = registerBlock("crystal_button",
             new ButtonBlock(BlockSetType.IRON, 10, FabricBlockSettings.copyOf(Blocks.GLASS).luminance(50).strength(1.0f).sounds(BlockSoundGroup.AMETHYST_BLOCK).nonOpaque().requiresTool()));
 
+    public static final Block LASER_BLOCK = registerBlock("laser_block",
+            new LaserBlock(FabricBlockSettings.copyOf(Blocks.OBSERVER).luminance(50).sounds(BlockSoundGroup.NETHERITE).nonOpaque().requiresTool()));
 
     private static Block registerBlock(String name, Block block)
     {

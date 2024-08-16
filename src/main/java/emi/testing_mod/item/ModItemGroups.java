@@ -28,6 +28,8 @@ public class ModItemGroups {
                         entries.add(ModBlocks.CRYSTAL_WALL);
                         entries.add(ModBlocks.CRYSTAL_BUTTON);
 
+                        entries.add(ModBlocks.LASER_BLOCK);
+
 
                     }).build());
 

@@ -26,7 +26,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CRYSTAL_STAIRS)
                 .add(ModBlocks.CRYSTAL_SLAB)
                 .add(ModBlocks.CRYSTAL_WALL)
-                .add(ModBlocks.CRYSTAL_BUTTON);
+                .add(ModBlocks.CRYSTAL_BUTTON)
+                .add(ModBlocks.LASER_BLOCK);
 
 
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
@@ -34,7 +35,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CRYSTAL_STAIRS)
                 .add(ModBlocks.CRYSTAL_SLAB)
                 .add(ModBlocks.CRYSTAL_WALL)
-                .add(ModBlocks.CRYSTAL_BUTTON);
+                .add(ModBlocks.CRYSTAL_BUTTON)
+                .add(ModBlocks.LASER_BLOCK);
+
 
         getOrCreateTagBuilder(BlockTags.WALLS)
                 .add(ModBlocks.CRYSTAL_WALL);

@@ -30,6 +30,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.CRYSTAL_SLAB, crystalOreDrops(ModBlocks.CRYSTAL_SLAB,ModItems.CRYSTAL_SHARD,0,1));
         addDrop(ModBlocks.CRYSTAL_WALL, crystalOreDrops(ModBlocks.CRYSTAL_SLAB,ModItems.CRYSTAL_SHARD,0,1));
         addDrop(ModBlocks.CRYSTAL_BUTTON, crystalOreDrops(ModBlocks.CRYSTAL_SLAB,ModItems.CRYSTAL_SHARD,0,1));
+        addDrop(ModBlocks.LASER_BLOCK);
 
     }
 

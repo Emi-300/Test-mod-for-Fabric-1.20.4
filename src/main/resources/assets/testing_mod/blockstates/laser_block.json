@@ -1,0 +1,58 @@
+
+{
+  "variants": {
+    "facing=down,powered=false": {
+      "model": "testing_mod:block/laser_block",
+      "x": 90,
+      "y": 90
+    },
+    "facing=down,powered=true": {
+      "model": "testing_mod:block/laser_block",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,powered=false": {
+      "model": "testing_mod:block/laser_block",
+      "y": 90
+    },
+    "facing=east,powered=true": {
+      "model": "testing_mod:block/laser_block",
+      "y": 90
+    },
+    "facing=north,powered=false": {
+      "model": "testing_mod:block/laser_block"
+    },
+    "facing=north,powered=true": {
+      "model": "testing_mod:block/laser_block"
+    },
+    "facing=south,powered=false": {
+      "model": "testing_mod:block/laser_block",
+      "y": 180
+    },
+    "facing=south,powered=true": {
+      "model": "testing_mod:block/laser_block",
+      "y": 180
+    },
+    "facing=up,powered=false": {
+      "model": "testing_mod:block/laser_block",
+      "x": 270,
+      "y": 90
+
+    },
+    "facing=up,powered=true": {
+      "model": "testing_mod:block/laser_block",
+      "x": 270,
+      "y": 90
+
+    },
+    "facing=west,powered=false": {
+      "model": "testing_mod:block/laser_block",
+      "y": 270
+    },
+    "facing=west,powered=true": {
+      "model": "testing_mod:block/laser_block",
+      "y": 270
+
+    }
+  }
+}
