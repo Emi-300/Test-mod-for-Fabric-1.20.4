@@ -1,8 +1,10 @@
 package emi.testing_mod;
 
 import emi.testing_mod.block.ModBlocks;
+import emi.testing_mod.block.entity.ModBlockEntities;
 import emi.testing_mod.item.ModItemGroups;
 import emi.testing_mod.item.ModItems;
+import emi.testing_mod.screen.ModScreenHandlers;
 import emi.testing_mod.sound.ModSounds;
 import emi.testing_mod.util.ModLootTableModifiers;
 import emi.testing_mod.world.gen.ModFeatures;
@@ -34,6 +36,9 @@ public class Testing_mod implements ModInitializer {
 
 			ModItems.registerModItems();
 			ModBlocks.registerModBlocks();
+
+		ModBlockEntities.RegisterBlockEntities();
+		ModScreenHandlers.registerScreenHandlers();
 
 
 			ModLootTableModifiers.modifyLootTables();

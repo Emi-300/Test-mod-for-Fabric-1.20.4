@@ -21,6 +21,8 @@ public class ModModelProvider extends FabricModelProvider {
         crystalPool.wall(ModBlocks.CRYSTAL_WALL);
         crystalPool.button(ModBlocks.CRYSTAL_BUTTON);
 
+
+
     }
 
     @Override
