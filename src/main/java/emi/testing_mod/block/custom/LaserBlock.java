@@ -193,13 +193,13 @@ public class LaserBlock extends BlockWithEntity implements BlockEntityProvider{
         Y_STEP_SHAPE = Block.createCuboidShape(2.0, -8.0, 2.0, 14.0, 24.0, 14.0);
         Z_STEP_SHAPE = Block.createCuboidShape(2.0, 2.0, -8.0, 14.0, 14.0, 24.0);
 
-        X_STEM_SHAPE = Block.createCuboidShape(-16.0, 0.0, 0.0, -7.0, 18.0, 16.0);
-        Y_STEM_SHAPE = Block.createCuboidShape(0.0, -16.0, 0.0, 18.0, -7.0, 16.0);
-        Z_STEM_SHAPE = Block.createCuboidShape(0, 0, -16, 16, 18, -7);
+        X_STEM_SHAPE = Block.createCuboidShape(-16.0, 0.0, 0.0, -7.0, 16.0, 16.0);
+        Y_STEM_SHAPE = Block.createCuboidShape(0.0, -16.0, 0.0, 16.0, -7.0, 16.0);
+        Z_STEM_SHAPE = Block.createCuboidShape(0, 0, -16, 16, 16, -7);
 
-        EAST_STEM_SHAPE = Block.createCuboidShape(23.0, 0.0, 0.0, 32, 18.0, 16.0);
+        EAST_STEM_SHAPE = Block.createCuboidShape(23.0, 0.0, 0.0, 32, 16.0, 16.0);
         TOP_STEM_SHAPE = Block.createCuboidShape(-2.0, 23.0, 0.0, 16.0, 32, 16.0);
-        SOUTH_STEM_SHAPE = Block.createCuboidShape(0, 0, 23, 16, 18, 32);
+        SOUTH_STEM_SHAPE = Block.createCuboidShape(0, 0, 23, 16, 16, 32);
 
         X_LENS_SHAPE = Block.createCuboidShape(24.0, 4.0, 4.0, 32.0, 12.0, 12.0);
         Y_LENS_SHAPE = Block.createCuboidShape(4.0, 24.0, 4.0, 12.0, 32.0, 12.0);
