@@ -1,0 +1,53 @@
+{
+  "carvers": {},
+  "downfall": 0.5,
+  "effects": {
+    "fog_color": 10518688,
+    "mood_sound": {
+      "block_search_extent": 8,
+      "offset": 2.0,
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000
+    },
+    "sky_color": 6890877,
+    "water_color": 7688593,
+    "water_fog_color": 7688593
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [
+      "minecraft:end_gateway_return"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [
+      "minecraft:chorus_plant",
+      "testing_mod:crystal_growth"
+    ]
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "minecraft:enderman",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 10
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.5
+}
