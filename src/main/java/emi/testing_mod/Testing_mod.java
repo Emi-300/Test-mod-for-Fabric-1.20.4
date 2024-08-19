@@ -4,6 +4,8 @@ import emi.testing_mod.block.ModBlocks;
 import emi.testing_mod.block.entity.ModBlockEntities;
 import emi.testing_mod.item.ModItemGroups;
 import emi.testing_mod.item.ModItems;
+import emi.testing_mod.particle.ModParticles;
+import emi.testing_mod.recipe.ModRecipes;
 import emi.testing_mod.screen.ModScreenHandlers;
 import emi.testing_mod.sound.ModSounds;
 import emi.testing_mod.util.ModLootTableModifiers;
@@ -40,6 +42,10 @@ public class Testing_mod implements ModInitializer {
 		ModBlockEntities.RegisterBlockEntities();
 		ModScreenHandlers.registerScreenHandlers();
 
+		ModParticles.registerModParticles();
+		
+
+		ModRecipes.registerRecipes();
 
 			ModLootTableModifiers.modifyLootTables();
 			ModSounds.registerSounds();

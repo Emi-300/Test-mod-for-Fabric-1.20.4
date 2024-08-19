@@ -1,6 +1,7 @@
 package emi.testing_mod.block.entity;
 
 import emi.testing_mod.item.ModItems;
+import emi.testing_mod.recipe.LaserRecipe;
 import emi.testing_mod.screen.LaserBlockScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
@@ -8,11 +9,16 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
+import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -21,6 +27,8 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class LaserBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory {
 
@@ -81,6 +89,16 @@ public class LaserBlockEntity extends BlockEntity implements ExtendedScreenHandl
         return inventory;
     }
 
+    public ItemStack getRenderStack() {
+        return this.getStack(INPUT_SLOT);
+    }
+
+    @Override
+    public void markDirty() {
+        world.updateListeners(pos, getCachedState(), getCachedState(), 3);
+        super.markDirty();
+    }
+
     @Override
     public void writeScreenOpeningData(ServerPlayerEntity player, PacketByteBuf buf) {
         buf.writeBlockPos(this.pos);
@@ -90,6 +108,12 @@ public class LaserBlockEntity extends BlockEntity implements ExtendedScreenHandl
     @Override
     public Text getDisplayName() {
         return Text.literal("Laser Block Interface");
+    }
+
+
+    public BlockState getBlockState()
+    {
+        return world.getBlockState(pos);
     }
 
     @Nullable
@@ -125,10 +149,12 @@ public class LaserBlockEntity extends BlockEntity implements ExtendedScreenHandl
     private void resetProgress() { this.progress = 0;}
 
     private void craftItem() {
-        this.removeStack(INPUT_SLOT,1);
-        ItemStack result = new ItemStack(Items.ECHO_SHARD);
 
-        this.setStack(OUTPUT_SLOT, new ItemStack(result.getItem(), getStack(OUTPUT_SLOT).getCount() + result.getCount()));
+        Optional<RecipeEntry<LaserRecipe>> recipe = getCurrentRecipe();
+
+        this.removeStack(INPUT_SLOT,1);
+
+        this.setStack(OUTPUT_SLOT, new ItemStack(recipe.get().value().getResult(null).getItem(), getStack(OUTPUT_SLOT).getCount() + recipe.get().value().getResult(null).getCount()));
 
     }
 
@@ -139,10 +165,20 @@ public class LaserBlockEntity extends BlockEntity implements ExtendedScreenHandl
     private void increaseCraftProgress() { progress++; }
 
     private boolean hasRecipe() {
-        ItemStack result = new ItemStack(Items.ECHO_SHARD);
-        boolean hasInput = getStack(INPUT_SLOT).getItem() == ModItems.POLISHED_CRYSTAL_SHARD;
 
-        return  hasInput && canInsertAmountIntoOutput(result) && canInsertItemIntoOutput(result.getItem());
+        Optional<RecipeEntry<LaserRecipe>> recipe = getCurrentRecipe();
+
+        return  recipe.isPresent() && canInsertItemIntoOutput(recipe.get().value().getResult(null).getItem())
+                && canInsertAmountIntoOutput(recipe.get().value().getResult(null));
+    }
+
+    private Optional<RecipeEntry<LaserRecipe>> getCurrentRecipe() {
+        SimpleInventory inv = new SimpleInventory(this.size());
+        for(int i = 0; i < this.size(); i++)
+        {
+            inv.setStack(i,this.getStack(i));
+        }
+        return getWorld().getRecipeManager().getFirstMatch(LaserRecipe.Type.INSTANCE, inv, getWorld());
     }
 
     private boolean canInsertItemIntoOutput(Item item) {
@@ -155,5 +191,19 @@ public class LaserBlockEntity extends BlockEntity implements ExtendedScreenHandl
 
     private boolean isOutputSlotReceivable() {
         return this.getStack(OUTPUT_SLOT).isEmpty() || this.getStack(OUTPUT_SLOT).getCount() < this.getStack(OUTPUT_SLOT).getMaxCount();
+    }
+
+
+    //client and server sync
+
+    @Nullable
+    @Override
+    public Packet<ClientPlayPacketListener> toUpdatePacket() {
+        return BlockEntityUpdateS2CPacket.create(this);
+    }
+
+    @Override
+    public NbtCompound toInitialChunkDataNbt() {
+        return createNbt();
     }
 }

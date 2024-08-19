@@ -43,8 +43,8 @@ public class LaserBlockScreen extends HandledScreen<LaserBlockScreenHandler> {
     @Override
     protected void init() {
         super.init();
-        titleX = 85;
-        playerInventoryTitleX = 85;
+        titleX = 60;
+
     }
 
     @Override

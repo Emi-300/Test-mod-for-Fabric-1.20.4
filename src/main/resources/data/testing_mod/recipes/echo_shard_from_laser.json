@@ -1,0 +1,12 @@
+{
+  "type": "testing_mod:laser_creation",
+  "ingredients": [
+    {
+      "item": "testing_mod:polished_crystal_shard"
+    }
+  ],
+  "output": {
+    "item": "minecraft:echo_shard",
+    "count": 1
+  }
+}

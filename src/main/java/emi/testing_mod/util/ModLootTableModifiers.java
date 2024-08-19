@@ -17,12 +17,12 @@ public class ModLootTableModifiers {
     public static void modifyLootTables()
     {
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
-            if(END_CITY_ID.equals(id))
+            if(source.isBuiltin() && END_CITY_ID.equals(id))
             {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.1f)) //drops 10% of the time
-                        .with(ItemEntry.builder(ModItems.CRYSTAL_SHARD)) // item
+                        .with(ItemEntry.builder(ModItems.POLISHED_CRYSTAL_SHARD)) // item
                         .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f,2.0f)).build()); //number of items
 
                 tableBuilder.pool(poolBuilder.build());
