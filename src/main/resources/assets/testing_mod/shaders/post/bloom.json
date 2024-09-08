@@ -1,0 +1,88 @@
+{
+  "targets": [
+    "swap",
+    "swap2",
+    "swap3",
+    "pswap",
+    "in"
+  ],
+  "passes": [
+    {
+      "name": "phosphor",
+      "intarget": "minecraft:main",
+      "outtarget": "pswap"
+    },
+    {
+      "name": "testing_mod:get_color",
+      "intarget": "in",
+      "outtarget": "swap",
+      "auxtargets": [
+        {
+          "name": "MBSampler",
+          "id": "pswap"
+        }
+      ]
+    },
+    {
+      "name": "blur",
+      "intarget": "swap",
+      "outtarget": "swap2",
+      "uniforms": [
+        {
+          "name": "BlurDir",
+          "values": [3.00,0]
+        },
+        {
+          "name": "Radius",
+          "values": [2.0]
+        }
+      ]
+    },
+    {
+      "name": "blur",
+      "intarget": "swap2",
+      "outtarget": "swap3",
+      "uniforms": [
+        {
+          "name": "BlurDir",
+          "values": [0,3.00]
+        },
+        {
+          "name": "Radius",
+          "values": [2.0]
+        }
+      ]
+    },
+    {
+      "name": "blur",
+      "intarget": "swap3",
+      "outtarget": "swap2",
+      "uniforms": [
+        {
+          "name": "BlurDir",
+          "values": [1,1]
+        },
+        {
+          "name": "Radius",
+          "values": [2.0]
+        }
+      ]
+    },
+    {
+      "name": "testing_mod:bloom",
+      "intarget": "minecraft:main",
+      "outtarget": "swap3",
+      "auxtargets": [
+        {
+          "name": "BloomSampler",
+          "id": "swap2"
+        }
+      ]
+    },
+    {
+      "name": "blit",
+      "intarget": "swap3",
+      "outtarget": "minecraft:main"
+    }
+  ]
+}

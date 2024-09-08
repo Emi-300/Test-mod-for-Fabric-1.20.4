@@ -1,6 +1,7 @@
 package emi.testing_mod.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import emi.testing_mod.Testing_mod;
 import emi.testing_mod.block.entity.LaserBlockEntity;
 import emi.testing_mod.block.entity.ModBlockEntities;
 import emi.testing_mod.particle.ModParticles;
@@ -114,8 +115,8 @@ public class LaserBlock extends BlockWithEntity implements BlockEntityProvider{
             double g = (double) (0.4F - (random.nextFloat() + random.nextFloat()) * 0.4F);
 
 
-            world.addParticle(ModParticles.LASER_PARTICLE, d + (double) direction.getOffsetX() * -2 + 0.5, e + (double) direction.getOffsetY() * -2 + 0.5, f + (double) direction.getOffsetZ() * -2 + 0.5, 0, 0, 0);
-            world.addParticle(ModParticles.LASER_PARTICLE, d + (double) direction.getOffsetX() * -2 + 0.5, e + (double) direction.getOffsetY() * -2 + 0.5, f + (double) direction.getOffsetZ() * -2 + 0.5, random.nextGaussian() * 0.05, random.nextGaussian() * 0.05, random.nextGaussian() * 0.05);
+           // world.addParticle(ModParticles.LASER_PARTICLE, d + (double) direction.getOffsetX() * -2 + 0.5, e + (double) direction.getOffsetY() * -2 + 0.5, f + (double) direction.getOffsetZ() * -2 + 0.5, 0, 0, 0);
+           // world.addParticle(ModParticles.LASER_PARTICLE, d + (double) direction.getOffsetX() * -2 + 0.5, e + (double) direction.getOffsetY() * -2 + 0.5, f + (double) direction.getOffsetZ() * -2 + 0.5, random.nextGaussian() * 0.05, random.nextGaussian() * 0.05, random.nextGaussian() * 0.05);
         }
 
     }

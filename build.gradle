@@ -49,6 +49,7 @@ dependencies {
 	// Include Satin as a Jar-in-Jar dependency (optional)
 	include "org.ladysnake:satin:${satin_version}"
 
+
 }
 
 processResources {

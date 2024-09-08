@@ -12,7 +12,7 @@ public class ModBlockEntities {
 
     public static final BlockEntityType<LaserBlockEntity> LASER_BLOCK_ENTITY =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Testing_mod.MOD_ID,"laser_block_be"),
-                    FabricBlockEntityTypeBuilder.create(LaserBlockEntity::new,
+                    BlockEntityType.Builder.create(LaserBlockEntity::new,
                             ModBlocks.LASER_BLOCK).build());
 
     public static void RegisterBlockEntities(){

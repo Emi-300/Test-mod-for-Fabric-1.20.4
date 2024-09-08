@@ -6,7 +6,7 @@
 		"1": "testing_mod:item/crystalsword_hilt",
 		"3": "testing_mod:item/crystalsword_texture2",
 		"4": "testing_mod:item/crystalsword_crystals",
-		"particle": "crystalsword_crystals"
+		"particle": "testing_mod:item/crystalsword_crystals"
 	},
 	"elements": [
 		{

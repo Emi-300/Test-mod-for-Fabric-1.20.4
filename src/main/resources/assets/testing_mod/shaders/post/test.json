@@ -1,0 +1,66 @@
+{
+  "targets": [
+    "preblur",
+    "swap",
+    "swap2",
+    "final"
+  ],
+  "passes": [
+    {
+      "name": "testing_mod:test",
+      "intarget": "final",
+      "outtarget": "preblur"
+    },
+    {
+      "name": "blur",
+      "intarget": "preblur",
+      "outtarget": "swap2",
+      "uniforms": [
+        {
+          "name": "BlurDir",
+          "values": [3.00,0]
+        },
+        {
+          "name": "Radius",
+          "values": [2.0]
+        }
+      ]
+    },
+    {
+      "name": "blur",
+      "intarget": "swap2",
+      "outtarget": "swap",
+      "uniforms": [
+        {
+          "name": "BlurDir",
+          "values": [0,3.00]
+        },
+        {
+          "name": "Radius",
+          "values": [2.0]
+        }
+      ]
+    },
+    {
+      "name": "blur",
+      "intarget": "swap",
+      "outtarget": "swap2",
+      "uniforms": [
+        {
+          "name": "BlurDir",
+          "values": [1,1]
+        },
+        {
+          "name": "Radius",
+          "values": [2.0]
+        }
+      ]
+    },
+
+    {
+      "name": "blit",
+      "intarget": "swap2",
+      "outtarget": "final"
+    }
+  ]
+}

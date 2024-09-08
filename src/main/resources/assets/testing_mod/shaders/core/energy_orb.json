@@ -1,0 +1,69 @@
+{
+  "targets": [
+    "orb",
+    "swap",
+    "swap2"
+  ],
+  "passes": [
+    {
+      "name": "rendertype_energy_orb",
+      "intarget": "minecraft:main",
+      "outtarget": "orb"
+    },
+    {
+      "name": "blur",
+      "intarget": "orb",
+      "outtarget": "swap",
+      "uniforms": [
+        {
+          "name": "BlurDir",
+          "values": [3.00,0]
+        },
+        {
+          "name": "Radius",
+          "values": [2.0]
+        }
+      ]
+    },
+    {
+      "name": "blur",
+      "intarget": "swap",
+      "outtarget": "swap2",
+      "uniforms": [
+        {
+          "name": "BlurDir",
+          "values": [0,3.00]
+        },
+        {
+          "name": "Radius",
+          "values": [2.0]
+        }
+      ]
+    },
+    {
+      "name": "blur",
+      "intarget": "swap2",
+      "outtarget": "swap",
+      "uniforms": [
+        {
+          "name": "BlurDir",
+          "values": [1,1]
+        },
+        {
+          "name": "Radius",
+          "values": [2.0]
+        }
+      ]
+    },
+    {
+      "name": "blit",
+      "intarget": "swap",
+      "outtarget": "minecraft:main"
+    },
+    {
+      "name": "blit",
+      "intarget": "orb",
+      "outtarget": "minecraft:main"
+    }
+  ]
+}

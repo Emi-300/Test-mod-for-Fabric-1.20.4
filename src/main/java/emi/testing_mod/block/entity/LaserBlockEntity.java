@@ -1,10 +1,12 @@
 package emi.testing_mod.block.entity;
 
+import emi.testing_mod.Testing_mod;
 import emi.testing_mod.item.ModItems;
 import emi.testing_mod.recipe.LaserRecipe;
 import emi.testing_mod.screen.LaserBlockScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -22,11 +24,14 @@ import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Position;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3i;
 
 import java.util.Optional;
 
@@ -41,6 +46,8 @@ public class LaserBlockEntity extends BlockEntity implements ExtendedScreenHandl
     private int progress = 0;
     private int maxProgress = 100;
 
+    public int timer = 0;
+    public int laser_length;
 
     public LaserBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.LASER_BLOCK_ENTITY, pos, state);
@@ -74,14 +81,18 @@ public class LaserBlockEntity extends BlockEntity implements ExtendedScreenHandl
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         Inventories.writeNbt(nbt, inventory);
-        nbt.putInt("laser_block.progress", progress);
+        nbt.putInt("progress", progress);
+        nbt.putInt("orb timer", timer);
+        nbt.putInt("laser length",laser_length);
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
         Inventories.readNbt(nbt, inventory);
-        progress = nbt.getInt("laser_block.progress");
+        progress = nbt.getInt("progress");
+        timer = nbt.getInt("orb timer");
+        laser_length = nbt.getInt("laser length");
     }
 
     @Override
@@ -144,6 +155,80 @@ public class LaserBlockEntity extends BlockEntity implements ExtendedScreenHandl
             this.resetProgress();
             markDirty(world,pos,state);
         }
+
+        if(state.get(Properties.POWERED) && timer < 15)
+        {
+            timer++;
+            markDirty(world,pos,state);
+            world.updateListeners(pos, state, state, 0);
+
+        } else if(timer > 0)
+        {
+            timer--;
+            markDirty(world,pos,state);
+            world.updateListeners(pos, state, state, 0);
+        }
+
+        if(timer == 15)
+        {
+            laser_length = getLaserLength();
+        }
+
+
+    }
+
+    public int getTimer(){
+        return this.timer;
+    }
+
+
+    public int getLaserLength()
+    {
+        int length = 1;
+        boolean foundBlock = false;
+        Vector3i direction = new Vector3i(0,0,0);
+
+        switch (getBlockState().get(Properties.FACING))
+        {
+            case UP:
+                direction.y--;
+                break;
+            case DOWN:
+                direction.y++;
+                break;
+            case EAST:
+                direction.x--;
+                break;
+            case WEST:
+                direction.x++;
+                break;
+            case NORTH:
+                direction.z++;
+                break;
+            case SOUTH:
+                direction.z--;
+                break;
+        }
+
+        while(!foundBlock)
+        {
+            length++;
+
+            BlockPos newDir = new BlockPos(this.pos.getX() + direction.x * length, this.pos.getY() + direction.y * length, this.pos.getZ() + direction.z * length);
+
+
+            if(world.getBlockState(newDir).getBlock() != Blocks.AIR)
+            {
+                foundBlock = true;
+            }
+
+            if(length > 50)
+            {
+                foundBlock = true;
+            }
+        }
+
+        return length;
     }
 
     private void resetProgress() { this.progress = 0;}
@@ -194,6 +279,7 @@ public class LaserBlockEntity extends BlockEntity implements ExtendedScreenHandl
     }
 
 
+
     //client and server sync
 
     @Nullable
@@ -206,4 +292,6 @@ public class LaserBlockEntity extends BlockEntity implements ExtendedScreenHandl
     public NbtCompound toInitialChunkDataNbt() {
         return createNbt();
     }
+
+
 }

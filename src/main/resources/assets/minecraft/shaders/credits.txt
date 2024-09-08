@@ -1,0 +1,3 @@
+Remember to credit thebaum64 (used code to create shader)
+https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/resource-packs/2277994-bloom-lighting-add-better-lighting-into-minecraft
+Do not know if this is legal or not, check when publishing
