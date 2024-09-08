@@ -109,8 +109,7 @@ public class LaserBlockEntityRenderer implements BlockEntityRenderer<LaserBlockE
         float scale = -(size / ((float)Math.pow(1.5,timer))) + size;
 
        // Testing_mod.LOGGER.info("Timer: " + timer);
-        if(timer > 0)
-        {
+        if(timer > 0) {
 
             //rendering circles
 
@@ -131,51 +130,45 @@ public class LaserBlockEntityRenderer implements BlockEntityRenderer<LaserBlockE
             matrix3f = matrices.peek().getNormalMatrix();
 
             fileReader.render(matrix4f, matrix3f, vertexConsumer, light, overlay);
-        }
-
-        matrices.pop();
-
-        matrices.push();
-
-        if(timer == 15)
-        {
-            //rendering laser
-
-            float l = entity.createNbt().getInt("laser length");
-
-            if(l != 0)
-            {
-                length = l - 2;
-            }
 
 
-            matrices.translate(x, y, z);
-            matrices.translate(-(length * 0.5f - 0.2) * dir.x,-(length * 0.5f - 0.2) * dir.y,-(length * 0.5f - 0.2) * dir.z);
-            matrices.scale(size * 0.8f + (length * 0.5f) * dir.x, size * 0.8f + (length * 0.5f) * dir.y, size * 0.8f + (length * 0.5f) * dir.z);
+            matrices.pop();
+
+            matrices.push();
+
+                //rendering laser
+
+                length = entity.createNbt().getFloat("laser length") - 2;
+
+                matrices.translate(x, y, z);
+                matrices.translate(-(length * 0.5f) * dir.x,-(length * 0.5f) * dir.y,-(length * 0.5f) * dir.z);
+
+                matrices.scale(size * 0.8f + (length * 0.6f) * dir.x, size * 0.8f + (length * 0.6f) * dir.y, size * 0.8f + (length * 0.6f) * dir.z);
 
 
-            matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(90 * dir.x));
-
-            matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(180 * dir.z));
-
-            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(spin * dir.x));
-            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(spin * dir.y));
-            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(spin * dir.z));
+                matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(90 * dir.x + 180 * ((dir.x - 2) % -3)));
 
 
-            Matrix4f matrix4f = matrices.peek().getPositionMatrix();
-            Matrix3f matrix3f = matrices.peek().getNormalMatrix();
+                matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(90 * dir.z));
+                matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(90 * dir.z + 180 * ((dir.z + 2) % 3)));
 
-            fileReader2.render(matrix4f, matrix3f, vertexConsumer, light, overlay);
 
-            matrices.scale(Math.abs(dir.y) * 0.25f + 0.75f,Math.abs(dir.x) * 0.25f + 0.75f,Math.abs(dir.z) * 0.25f + 0.75f);
+                //matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(spin * dir.x));
+                //matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(spin * dir.y));
+                //matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(spin * dir.z));
 
-            fileReader2.render(matrix4f, matrix3f, vertexConsumer, light, overlay);
 
-            matrices.scale(Math.abs(dir.y) * 0.25f + 0.75f,Math.abs(dir.x) * 0.25f + 0.75f,Math.abs(dir.z) * 0.25f + 0.75f);
+                matrix4f = matrices.peek().getPositionMatrix();
+                matrix3f = matrices.peek().getNormalMatrix();
 
-            fileReader2.render(matrix4f, matrix3f, vertexConsumer, light, overlay);
+                fileReader2.render(matrix4f, matrix3f, vertexConsumer, light, overlay);
 
+                matrices.scale(Math.abs(dir.x) * 0.25f + 0.75f,Math.abs(dir.x) * 0.25f + 0.75f,Math.abs(dir.x) * 0.25f + 0.75f);
+
+                fileReader2.render(matrix4f, matrix3f, vertexConsumer, light, overlay);
+
+
+               // fileReader2.render(matrix4f, matrix3f, vertexConsumer, light, overlay);
 
 
         }

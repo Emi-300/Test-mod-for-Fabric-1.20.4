@@ -68,6 +68,7 @@ public class ModRenderLayers extends RenderLayer{
                         .target(TRANSLUCENT_TARGET)
                         .lightmap(ENABLE_LIGHTMAP)
                         .overlay(ENABLE_OVERLAY_COLOR)
+                        .cull(DISABLE_CULLING)
                         .texture(RenderPhase.Textures.create()
                                 .add(LaserBlockEntityRenderer.NOISE_TEXTURE_1, false, false).build())
                         .build(false));

@@ -5,6 +5,7 @@ import emi.testing_mod.item.ModItems;
 import emi.testing_mod.recipe.LaserRecipe;
 import emi.testing_mod.screen.LaserBlockScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
@@ -47,7 +48,7 @@ public class LaserBlockEntity extends BlockEntity implements ExtendedScreenHandl
     private int maxProgress = 100;
 
     public int timer = 0;
-    public int laser_length;
+    public float laser_length;
 
     public LaserBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.LASER_BLOCK_ENTITY, pos, state);
@@ -83,7 +84,7 @@ public class LaserBlockEntity extends BlockEntity implements ExtendedScreenHandl
         Inventories.writeNbt(nbt, inventory);
         nbt.putInt("progress", progress);
         nbt.putInt("orb timer", timer);
-        nbt.putInt("laser length",laser_length);
+        nbt.putFloat("laser length",laser_length);
     }
 
     @Override
@@ -92,7 +93,7 @@ public class LaserBlockEntity extends BlockEntity implements ExtendedScreenHandl
         Inventories.readNbt(nbt, inventory);
         progress = nbt.getInt("progress");
         timer = nbt.getInt("orb timer");
-        laser_length = nbt.getInt("laser length");
+        laser_length = nbt.getFloat("laser length");
     }
 
     @Override
@@ -158,6 +159,7 @@ public class LaserBlockEntity extends BlockEntity implements ExtendedScreenHandl
 
         if(state.get(Properties.POWERED) && timer < 15)
         {
+
             timer++;
             markDirty(world,pos,state);
             world.updateListeners(pos, state, state, 0);
@@ -169,9 +171,11 @@ public class LaserBlockEntity extends BlockEntity implements ExtendedScreenHandl
             world.updateListeners(pos, state, state, 0);
         }
 
-        if(timer == 15)
+        if(timer > 13)
         {
             laser_length = getLaserLength();
+        } else if(laser_length != 2){
+            laser_length = 2.6f;
         }
 
 
@@ -182,7 +186,7 @@ public class LaserBlockEntity extends BlockEntity implements ExtendedScreenHandl
     }
 
 
-    public int getLaserLength()
+    public float getLaserLength()
     {
         int length = 1;
         boolean foundBlock = false;
@@ -216,8 +220,9 @@ public class LaserBlockEntity extends BlockEntity implements ExtendedScreenHandl
 
             BlockPos newDir = new BlockPos(this.pos.getX() + direction.x * length, this.pos.getY() + direction.y * length, this.pos.getZ() + direction.z * length);
 
+            Block block = world.getBlockState(newDir).getBlock();
 
-            if(world.getBlockState(newDir).getBlock() != Blocks.AIR)
+            if(block != Blocks.AIR && !block.isTransparent(world.getBlockState(newDir), world,newDir))
             {
                 foundBlock = true;
             }
