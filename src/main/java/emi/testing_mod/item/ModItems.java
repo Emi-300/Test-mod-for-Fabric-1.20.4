@@ -24,6 +24,9 @@ public class ModItems {
 
     public static final Item CRYSTAL_SHARD = registerItem("crystal_shard", new CrystalShardItem(new Item.Settings()));
     public static final Item POLISHED_CRYSTAL_SHARD = registerItem("polished_crystal_shard", new Item(new Item.Settings()));
+    public static final Item LASER_CORE = registerItem("laser_core", new Item(new Item.Settings()));
+    public static final Item LENS = registerItem("lens", new Item(new Item.Settings()));
+    public static final Item LOGIC_CONTROLLER = registerItem("logic_controller", new Item(new Item.Settings()));
 
     public static final Item CRYSTAL_SWORD = registerItem("crystal_sword", new CrystalSwordItem(ModToolMaterial.CRYSTAL,new Item.Settings().maxCount(1)));
 
@@ -31,6 +34,9 @@ public class ModItems {
     {
         entries.add(CRYSTAL_SHARD);
         entries.add(POLISHED_CRYSTAL_SHARD);
+        entries.add(LASER_CORE);
+        entries.add(LENS);
+        entries.add(LOGIC_CONTROLLER);
     }
     private static Item registerItem(String name, Item item)
     {

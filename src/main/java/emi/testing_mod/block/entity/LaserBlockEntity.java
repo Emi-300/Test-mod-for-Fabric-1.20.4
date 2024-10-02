@@ -9,6 +9,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
@@ -21,19 +25,24 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
+import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
+import net.minecraft.util.TypeFilter;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Position;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3d;
 import org.joml.Vector3i;
 
+import java.util.List;
 import java.util.Optional;
 
 public class LaserBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory {
@@ -174,10 +183,52 @@ public class LaserBlockEntity extends BlockEntity implements ExtendedScreenHandl
         if(timer > 13)
         {
             laser_length = getLaserLength();
-        } else if(laser_length != 2){
-            laser_length = 2.6f;
-        }
 
+            //hurts entities if they're in laser beam
+            //TODO make it change items
+            Vector3i direction = new Vector3i(0,0,0);
+
+            switch (getBlockState().get(Properties.FACING))
+            {
+                case UP:
+                    direction.y--;
+                    break;
+                case DOWN:
+                    direction.y++;
+                    break;
+                case EAST:
+                    direction.x--;
+                    break;
+                case WEST:
+                    direction.x++;
+                    break;
+                case NORTH:
+                    direction.z++;
+                    break;
+                case SOUTH:
+                    direction.z--;
+                    break;
+            }
+
+            for(int i = 2; i < (int)laser_length; i++)
+            {
+
+
+                BlockPos newDir = new BlockPos(this.pos.getX() + direction.x * i, this.pos.getY() + direction.y * i, this.pos.getZ() + direction.z * i);
+
+
+                List<LivingEntity> entities = world.getEntitiesByType(TypeFilter.instanceOf(LivingEntity.class), new Box(newDir.getX(), newDir.getY(), newDir.getZ(),newDir.getX() + 1, newDir.getY() + 1, newDir.getZ() + 1), EntityPredicates.VALID_LIVING_ENTITY);
+
+                for(LivingEntity e : entities)
+                {
+                    e.setGlowing(true);
+                    e.setHealth(e.getHealth() - e.getMaxHealth() / 20);
+                }
+            }
+
+        } else if(laser_length != 2){
+            laser_length = 2.3f;
+        }
 
     }
 

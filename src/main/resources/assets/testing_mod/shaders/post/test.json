@@ -3,17 +3,24 @@
     "preblur",
     "swap",
     "swap2",
-    "final"
+    "final",
+    "test"
   ],
   "passes": [
     {
       "name": "testing_mod:test",
       "intarget": "final",
-      "outtarget": "preblur"
+      "outtarget": "preblur",
+      "auxtargets": [
+        {
+          "name": "LaserDepth",
+          "id": "test"
+        }
+      ]
     },
     {
       "name": "blur",
-      "intarget": "preblur",
+      "intarget": "final",
       "outtarget": "swap2",
       "uniforms": [
         {
@@ -53,6 +60,32 @@
         {
           "name": "Radius",
           "values": [2.0]
+        }
+      ]
+    },
+    {
+      "name": "testing_mod:modify_blur",
+      "intarget": "swap2",
+      "outtarget": "swap",
+      "auxtargets": [
+        {
+          "name": "DepthSampler",
+          "id": "preblur"
+        }
+      ]
+    },
+    {
+      "name": "testing_mod:join",
+      "intarget": "swap",
+      "outtarget": "swap2",
+      "auxtargets": [
+        {
+          "name": "MainSampler",
+          "id": "final"
+        },
+        {
+          "name": "DepthSampler",
+          "id": "preblur"
         }
       ]
     },

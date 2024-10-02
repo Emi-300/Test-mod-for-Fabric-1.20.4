@@ -25,6 +25,8 @@ import java.util.Objects;
 public class ModRenderLayers extends RenderLayer{
 
 
+    private final MinecraftClient mc = MinecraftClient.getInstance();
+
     public static final ManagedCoreShader laser = ShaderEffectManager.getInstance().manageCoreShader(Objects.requireNonNull(Identifier.of(Testing_mod.MOD_ID, ModShaders.LASER_SHADER_ID)), VertexFormats.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL);
     private static final Uniform1f uniformGameTime = laser.findUniform1f("GameTime");
     //private static final Uniform1f core = laser.findUniform1f("Core");
@@ -65,6 +67,7 @@ public class ModRenderLayers extends RenderLayer{
                 RenderLayer.MultiPhaseParameters.builder()
                         .program(new RenderPhase.ShaderProgram(laser::getProgram))
                         .transparency(TRANSLUCENT_TRANSPARENCY)
+                        .depthTest(RenderPhase.LEQUAL_DEPTH_TEST)
                         .target(TRANSLUCENT_TARGET)
                         .lightmap(ENABLE_LIGHTMAP)
                         .overlay(ENABLE_OVERLAY_COLOR)

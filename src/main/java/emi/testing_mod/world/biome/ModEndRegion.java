@@ -18,7 +18,7 @@ import java.util.function.Consumer;
 public class ModEndRegion extends Region {
 
     public ModEndRegion(Identifier name, int weight) {
-        super(name, RegionType.OVERWORLD, weight);
+        super(name, RegionType.NETHER, weight);
     }
 
     @Override

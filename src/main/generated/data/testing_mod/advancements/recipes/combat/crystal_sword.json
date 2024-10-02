@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:crystal_sword"
+        "recipe": "testing_mod:crystal_sword"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:crystal_sword"
+      "testing_mod:crystal_sword"
     ]
   }
 }

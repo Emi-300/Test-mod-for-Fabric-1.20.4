@@ -29,5 +29,6 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(ModItems.CRYSTAL_SHARD, Models.GENERATED);
         itemModelGenerator.register(ModItems.POLISHED_CRYSTAL_SHARD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.LENS, Models.GENERATED);
     }
 }

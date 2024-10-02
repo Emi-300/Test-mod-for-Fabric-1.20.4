@@ -2,6 +2,7 @@
 
 uniform sampler2D DiffuseSampler;
 uniform sampler2D MainSampler;
+uniform sampler2D DepthSampler;
 
 varying vec2 texCoord;
 

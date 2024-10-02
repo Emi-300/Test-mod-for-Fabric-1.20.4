@@ -1,8 +1,11 @@
 package emi.testing_mod.block.entity.renderer;
 
+import emi.testing_mod.TestingModClient;
 import emi.testing_mod.Testing_mod;
 import emi.testing_mod.block.entity.LaserBlockEntity;
 import emi.testing_mod.render.ModRenderLayers;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gl.Framebuffer;
 import net.minecraft.client.render.*;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
@@ -138,20 +141,26 @@ public class LaserBlockEntityRenderer implements BlockEntityRenderer<LaserBlockE
 
                 //rendering laser
 
-                length = entity.createNbt().getFloat("laser length") - 2;
+                length = entity.createNbt().getFloat("laser length") - 3;
 
                 matrices.translate(x, y, z);
-                matrices.translate(-(length * 0.5f) * dir.x,-(length * 0.5f) * dir.y,-(length * 0.5f) * dir.z);
+                matrices.translate(-(length * 0.5f + 0.4f) * dir.x,-(length * 0.5f + 0.4f) * dir.y,-(length * 0.5f + 0.4f) * dir.z);
 
-                matrices.scale(size * 0.8f + (length * 0.6f) * dir.x, size * 0.8f + (length * 0.6f) * dir.y, size * 0.8f + (length * 0.6f) * dir.z);
+                matrices.scale(size * 0.75f + (length * 0.5f) * Math.abs(dir.x), size * 0.75f + (length * 0.5f) * Math.abs(dir.y), size * 0.75f + (length * 0.5f) * Math.abs(dir.z));
 
 
-                matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(90 * dir.x + 180 * ((dir.x - 2) % -3)));
+                matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(90 * dir.x + 180
+                //        + 180 * ((dir.x - 2) % -3)
+                ));
 
 
                 matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(90 * dir.z));
-                matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(90 * dir.z + 180 * ((dir.z + 2) % 3)));
+                matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(90 * dir.z
+                //        + 180 * ((dir.z + 2) % 3)
+                ));
 
+                if(dir.y != 0)
+                    matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(90 + 90 * dir.y));
 
                 //matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(spin * dir.x));
                 //matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(spin * dir.y));
@@ -163,12 +172,13 @@ public class LaserBlockEntityRenderer implements BlockEntityRenderer<LaserBlockE
 
                 fileReader2.render(matrix4f, matrix3f, vertexConsumer, light, overlay);
 
-                matrices.scale(Math.abs(dir.x) * 0.25f + 0.75f,Math.abs(dir.x) * 0.25f + 0.75f,Math.abs(dir.x) * 0.25f + 0.75f);
+                matrices.scale(0.75f,1,0.75f);
 
                 fileReader2.render(matrix4f, matrix3f, vertexConsumer, light, overlay);
 
+                matrices.scale(0.75f,1,0.75f);
 
-               // fileReader2.render(matrix4f, matrix3f, vertexConsumer, light, overlay);
+                fileReader2.render(matrix4f, matrix3f, vertexConsumer, light, overlay);
 
 
         }
@@ -187,8 +197,8 @@ public class LaserBlockEntityRenderer implements BlockEntityRenderer<LaserBlockE
 
     protected RenderLayer getLayer() {
         RenderLayer baseLayer = ModRenderLayers.LASER_RENDER_LAYER;
-        //return baseLayer == null ? null : TestingModClient.bloomBuffer.getRenderLayer(baseLayer);
-        return baseLayer;
+        return baseLayer == null ? null : TestingModClient.bloomBuffer.getRenderLayer(baseLayer);
+        //return baseLayer;
     }
 
 }

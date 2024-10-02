@@ -1,54 +1,16 @@
 {
   "targets": [
     "swap",
-    "final"
+    "final",
+    "depth"
   ],
   "passes": [
     {
-      "name": "blur",
-      "intarget": "final",
-      "outtarget": "swap",
-      "uniforms": [
-        {
-          "name": "BlurDir",
-          "values": [3.00,0]
-        },
-        {
-          "name": "Radius",
-          "values": [2.0]
-        }
-      ]
+      "name": "testing_mod:test_depth",
+      "intarget": "minecraft:main",
+      "outtarget": "swap"
     },
-    {
-      "name": "blur",
-      "intarget": "swap",
-      "outtarget": "swap",
-      "uniforms": [
-        {
-          "name": "BlurDir",
-          "values": [0,3.00]
-        },
-        {
-          "name": "Radius",
-          "values": [2.0]
-        }
-      ]
-    },
-    {
-      "name": "blur",
-      "intarget": "swap",
-      "outtarget": "swap",
-      "uniforms": [
-        {
-          "name": "BlurDir",
-          "values": [1,1]
-        },
-        {
-          "name": "Radius",
-          "values": [2.0]
-        }
-      ]
-    },
+
     {
       "name": "blit",
       "intarget": "swap",

@@ -21,6 +21,9 @@ public class ModItemGroups {
                         entries.add(ModItems.CRYSTAL_SHARD);
                         entries.add(ModItems.POLISHED_CRYSTAL_SHARD);
                         entries.add(ModItems.CRYSTAL_SWORD);
+                        entries.add(ModItems.LASER_CORE);
+                        entries.add(ModItems.LENS);
+                        entries.add(ModItems.LOGIC_CONTROLLER);
 
                         entries.add(ModBlocks.CRYSTAL_BLOCK);
                         entries.add(ModBlocks.CRYSTAL_STAIRS);

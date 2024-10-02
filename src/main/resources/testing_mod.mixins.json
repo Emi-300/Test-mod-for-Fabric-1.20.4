@@ -3,7 +3,8 @@
 	"package": "emi.testing_mod.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"ExampleMixin"
+		"ExampleMixin",
+		"RenderLayerMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

@@ -34,7 +34,7 @@ public class ModPlacedFeatures {
                 ModOrePlacement.modifiersWithCount(12, //veins per chunk
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-80),YOffset.fixed(80))));
 
-        register(context, CRYSTAL_GROWTH_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.CRYSTAL_GROWTH_KEY), List.of(CountPlacementModifier.of(3), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of()));
+        register(context, CRYSTAL_GROWTH_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.CRYSTAL_GROWTH_KEY), List.of(CountPlacementModifier.of(1), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of()));
     }
 
     public static RegistryKey<PlacedFeature> registerKey(String name){

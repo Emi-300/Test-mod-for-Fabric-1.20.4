@@ -30,6 +30,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS,ModBlocks.CRYSTAL_SLAB,ModBlocks.CRYSTAL_BLOCK);
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS,ModBlocks.CRYSTAL_WALL,ModBlocks.CRYSTAL_BLOCK);
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS,ModBlocks.CRYSTAL_STAIRS,ModBlocks.CRYSTAL_BLOCK);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.CRYSTAL_SWORD, 1)
                 .pattern("ABA")
                 .pattern("ABA")
@@ -38,6 +39,49 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('B', Items.NETHERITE_INGOT)
                 .input('C', Items.GOLD_INGOT)
                 .criterion(hasItem(ModItems.CRYSTAL_SHARD), conditionsFromItem(ModItems.CRYSTAL_SHARD))
-                .offerTo(exporter, new Identifier(getRecipeName(ModItems.CRYSTAL_SWORD)));
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.LASER_CORE, 1)
+                .pattern("CCC")
+                .pattern("IAI")
+                .pattern("CCC")
+                .input('A', ModItems.POLISHED_CRYSTAL_SHARD)
+                .input('I', Items.IRON_INGOT)
+                .input('C', Items.COPPER_INGOT)
+                .criterion(hasItem(ModItems.POLISHED_CRYSTAL_SHARD), conditionsFromItem(ModItems.POLISHED_CRYSTAL_SHARD))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.LENS, 1)
+                .pattern(" I ")
+                .pattern("IPI")
+                .pattern(" I ")
+                .input('I', Items.IRON_INGOT)
+                .input('P', Items.GLASS_PANE)
+                .criterion(hasItem(Items.GLASS_PANE), conditionsFromItem(Items.GLASS_PANE))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.LOGIC_CONTROLLER, 1)
+                .pattern("RGR")
+                .pattern("ECE")
+                .pattern("III")
+                .input('I', Items.IRON_INGOT)
+                .input('R', Items.REDSTONE)
+                .input('E', Items.REPEATER)
+                .input('C', Items.COMPARATOR)
+                .input('G', Items.GREEN_DYE)
+                .criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.LASER_BLOCK, 1)
+                .pattern("IPI")
+                .pattern("OCL")
+                .pattern("IPI")
+                .input('I', Items.IRON_INGOT)
+                .input('O', ModItems.LOGIC_CONTROLLER)
+                .input('C', ModItems.LASER_CORE)
+                .input('L', ModItems.LENS)
+                .input('P', ModItems.POLISHED_CRYSTAL_SHARD)
+                .criterion(hasItem(ModItems.LASER_CORE), conditionsFromItem(ModItems.LASER_CORE))
+                .offerTo(exporter);
     }
 }

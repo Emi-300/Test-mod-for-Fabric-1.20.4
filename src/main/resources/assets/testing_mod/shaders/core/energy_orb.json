@@ -6,7 +6,7 @@
   ],
   "passes": [
     {
-      "name": "rendertype_energy_orb",
+      "name": "testing_mod:rendertype_energy_orb",
       "intarget": "minecraft:main",
       "outtarget": "orb"
     },

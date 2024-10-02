@@ -1,0 +1,19 @@
+{
+
+  "start_pool": "testing_mod:large_growth/large_growth_pool",
+  "size": 5, //max 20
+  "max_distance_from_center": 100, //max 166
+  "project_start_to_heightmap": "WORLD_SURFACE_WG",
+  "start_height": {
+    "absolute": -10
+  },
+  "use_expansion_hack": false,
+  "type": "testing_mod:crystal_growth_structures",
+  "biomes": "#minecraft:is_end",
+  "terrain_adaptation": "none",
+  "step": "underground_structures",
+  "spawn_overrides": {
+
+  }
+
+}

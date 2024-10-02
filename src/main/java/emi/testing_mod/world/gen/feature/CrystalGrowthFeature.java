@@ -23,75 +23,24 @@ public class CrystalGrowthFeature extends Feature<DefaultFeatureConfig> {
         StructureWorldAccess structureWorldAccess;
         for(structureWorldAccess = context.getWorld(); structureWorldAccess.isAir(blockPos) && blockPos.getY() > structureWorldAccess.getBottomY() + 2; blockPos = blockPos.down()) {
         }
+            int length = random.nextBetween(5,10);
+            blockPos = blockPos.up(random.nextInt(2));
+            double angleX = random.nextFloat() * 2 * Math.PI;
+            double angleY = random.nextFloat() * Math.PI / 2f;
 
+            BlockState blockState = ModBlocks.CRYSTAL_BLOCK.getDefaultState();
+        for(int i = 0; i < length; i++) {
 
-            blockPos = blockPos.up(random.nextInt(4));
-            int i = random.nextInt(4) + 7;
-            int j = i / 4 + random.nextInt(2);
-            if (j > 1 && random.nextInt(60) == 0) {
-                blockPos = blockPos.up(10 + random.nextInt(30));
-            }
+            structureWorldAccess.setBlockState(blockPos,blockState,3);
+            int x = (int)(Math.sin(angleX) + 0.5);
+            int y = (int)(Math.cos(angleY) + 0.5);
+            int z = (int)(Math.cos(angleX) + 0.5);
 
-            int k;
-            int l;
-            for(k = 0; k < i; ++k) {
-                float f = (1.0F - (float)k / (float)i) * (float)j;
-                l = MathHelper.ceil(f);
+            blockPos.add(x,y,z);
 
-                for(int m = -l; m <= l; ++m) {
-                    float g = (float)MathHelper.abs(m) - 0.25F;
+            if (blockPos.getY() >= structureWorldAccess.getTopY()) break;
 
-                    for(int n = -l; n <= l; ++n) {
-                        float h = (float)MathHelper.abs(n) - 0.25F;
-                        if ((m == 0 && n == 0 || !(g * g + h * h > f * f)) && (m != -l && m != l && n != -l && n != l || !(random.nextFloat() > 0.75F))) {
-                            BlockState blockState = structureWorldAccess.getBlockState(blockPos.add(m, k, n));
-                            if (blockState.isAir() || isSoil(blockState) || blockState.isOf(Blocks.SNOW_BLOCK) || blockState.isOf(Blocks.ICE)) {
-                                this.setBlockState(structureWorldAccess, blockPos.add(m, k, n), ModBlocks.CRYSTAL_BLOCK.getDefaultState());
-                            }
-
-                            if (k != 0 && l > 1) {
-                                blockState = structureWorldAccess.getBlockState(blockPos.add(m, -k, n));
-                                if (blockState.isAir() || isSoil(blockState) || blockState.isOf(Blocks.SNOW_BLOCK) || blockState.isOf(Blocks.ICE)) {
-                                    this.setBlockState(structureWorldAccess, blockPos.add(m, -k, n), ModBlocks.CRYSTAL_BLOCK.getDefaultState());
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            k = j - 1;
-            if (k < 0) {
-                k = 0;
-            } else if (k > 1) {
-                k = 1;
-            }
-
-            for(int o = -k; o <= k; ++o) {
-                for(l = -k; l <= k; ++l) {
-                    BlockPos blockPos2 = blockPos.add(o, -1, l);
-                    int p = 50;
-                    if (Math.abs(o) == 1 && Math.abs(l) == 1) {
-                        p = random.nextInt(5);
-                    }
-
-                    while(blockPos2.getY() > 50) {
-                        BlockState blockState2 = structureWorldAccess.getBlockState(blockPos2);
-                        if (!blockState2.isAir() && !isSoil(blockState2) && !blockState2.isOf(Blocks.SNOW_BLOCK) && !blockState2.isOf(Blocks.ICE) && !blockState2.isOf(Blocks.PACKED_ICE)) {
-                            break;
-                        }
-
-                        this.setBlockState(structureWorldAccess, blockPos2, ModBlocks.CRYSTAL_BLOCK.getDefaultState());
-                        blockPos2 = blockPos2.down();
-                        --p;
-                        if (p <= 0) {
-                            blockPos2 = blockPos2.down(random.nextInt(5) + 1);
-                            p = random.nextInt(5);
-                        }
-                    }
-                }
-            }
-
+        }
             return true;
 
     }

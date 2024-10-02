@@ -1,4 +1,4 @@
-// 1.20.4	2024-07-20T13:57:26.3420751	Testing Mod/Model Definitions
+// 1.20.4	2024-09-30T18:07:49.9827748	Testing Mod/Model Definitions
 da977bd450669eb535c57dfbc64b692da02aa688 assets\testing_mod\models\block\crystal_slab.json
 8908522dc3cb6367e900353e5b10a21aebcadd19 assets\testing_mod\blockstates\crystal_button.json
 08e1a67eb9f1381e39476aef7a7e1cfe24e18884 assets\testing_mod\models\item\polished_crystal_shard.json
@@ -18,8 +18,9 @@ dbc033b9f0b38afeb3724e6e6a6b49a6c45b1f87 assets\testing_mod\models\block\crystal
 d3d0b2ed89e2913bc58b9b38719f2e51b0c0cbe7 assets\testing_mod\models\item\crystal_block.json
 005af2a19206c73057f534fb7d7bad2b6eb5b525 assets\testing_mod\blockstates\crystal_wall.json
 e4c0e20e203e029ccd511ab5f66f7fe280181694 assets\testing_mod\models\item\crystal_button.json
-bdf413212a0d12f42a25978a9ced99d67c8b0476 assets\testing_mod\models\block\crystal_stairs_inner.json
 01b3e310abd8b17d6ad5a2e6452dc3bf0314d0dc assets\testing_mod\models\item\crystal_shard.json
+bdf413212a0d12f42a25978a9ced99d67c8b0476 assets\testing_mod\models\block\crystal_stairs_inner.json
+af149ccad7e423f73e987f0be0816de4f717119b assets\testing_mod\models\item\lens.json
 710207c182d1224c68bee665b90995b78e83c640 assets\testing_mod\models\block\crystal_button.json
 963971dec0705cb8d7ca35f407c1831a66917ba6 assets\testing_mod\models\block\crystal_slab_top.json
 db537e195c8c077915e8a2308f526135425800a8 assets\testing_mod\models\block\crystal_wall_post.json

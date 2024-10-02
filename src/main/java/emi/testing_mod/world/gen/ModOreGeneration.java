@@ -13,8 +13,8 @@ public class ModOreGeneration {
         BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(),
                 GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeatures.CRYSTAL_END_PLACED_KEY);
 
-        BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(),
-                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.CRYSTAL_GROWTH_PLACED_KEY);
+        //BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(),
+        //        GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.CRYSTAL_GROWTH_PLACED_KEY);
 
     }
 }
