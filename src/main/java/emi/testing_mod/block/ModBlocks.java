@@ -3,7 +3,7 @@ package emi.testing_mod.block;
 import emi.testing_mod.Testing_mod;
 import emi.testing_mod.block.custom.CrystalBlock;
 import emi.testing_mod.block.custom.LaserBlock;
-import net.fabricmc.fabric.api.block.v1.FabricBlock;
+import emi.testing_mod.block.custom.ReactorCore;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
@@ -29,6 +29,9 @@ public class ModBlocks {
 
     public static final Block LASER_BLOCK = registerBlock("laser_block",
             new LaserBlock(FabricBlockSettings.copyOf(Blocks.OBSERVER).luminance(50).sounds(BlockSoundGroup.NETHERITE).nonOpaque().requiresTool()));
+
+    public static final Block REACTOR_CORE = registerBlock("reactor_core",
+            new ReactorCore(FabricBlockSettings.copyOf(Blocks.REDSTONE_LAMP).luminance(50).sounds(BlockSoundGroup.NETHERITE).nonOpaque().requiresTool()));
 
     private static Block registerBlock(String name, Block block)
     {

@@ -1,17 +1,15 @@
 package emi.testing_mod.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import emi.testing_mod.Testing_mod;
 import emi.testing_mod.block.entity.LaserBlockEntity;
+import emi.testing_mod.block.entity.ReactorCoreEntity;
 import emi.testing_mod.block.entity.ModBlockEntities;
-import emi.testing_mod.particle.ModParticles;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
@@ -102,25 +100,6 @@ public class LaserBlock extends BlockWithEntity implements BlockEntityProvider{
         return BlockRenderType.MODEL;
     }
 
-    //particle system
-
-    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-
-        if(state.get(POWERED)) {
-
-            Direction direction = (Direction) state.get(FACING);
-            double d = (double) pos.getX();// + 0.55 - (double)(random.nextFloat() * 0.1F);
-            double e = (double) pos.getY();// + 0.55 - (double)(random.nextFloat() * 0.1F);
-            double f = (double) pos.getZ();// + 0.55 - (double)(random.nextFloat() * 0.1F);
-            double g = (double) (0.4F - (random.nextFloat() + random.nextFloat()) * 0.4F);
-
-
-           // world.addParticle(ModParticles.LASER_PARTICLE, d + (double) direction.getOffsetX() * -2 + 0.5, e + (double) direction.getOffsetY() * -2 + 0.5, f + (double) direction.getOffsetZ() * -2 + 0.5, 0, 0, 0);
-           // world.addParticle(ModParticles.LASER_PARTICLE, d + (double) direction.getOffsetX() * -2 + 0.5, e + (double) direction.getOffsetY() * -2 + 0.5, f + (double) direction.getOffsetZ() * -2 + 0.5, random.nextGaussian() * 0.05, random.nextGaussian() * 0.05, random.nextGaussian() * 0.05);
-        }
-
-    }
-
     //Block entity
 
     @Nullable
@@ -146,7 +125,7 @@ public class LaserBlock extends BlockWithEntity implements BlockEntityProvider{
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if(!world.isClient()) {
-            NamedScreenHandlerFactory screenHandlerFactory = ((LaserBlockEntity) world.getBlockEntity(pos));
+            NamedScreenHandlerFactory screenHandlerFactory = ((ReactorCoreEntity) world.getBlockEntity(pos));
 
             if(screenHandlerFactory != null)
             {

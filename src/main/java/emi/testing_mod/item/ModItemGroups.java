@@ -32,6 +32,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.CRYSTAL_BUTTON);
 
                         entries.add(ModBlocks.LASER_BLOCK);
+                        entries.add(ModBlocks.REACTOR_CORE);
 
 
                     }).build());

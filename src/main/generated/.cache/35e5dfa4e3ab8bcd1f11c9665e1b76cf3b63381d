@@ -1,7 +1,8 @@
-// 1.20.4	2024-09-30T18:07:49.9863516	Testing Mod/Block Loot Tables
+// 1.20.4	2024-10-11T23:29:59.6509203	Testing Mod/Block Loot Tables
 bb781101bd1387ec3460cf36c126d28492941596 data\testing_mod\loot_tables\blocks\laser_block.json
 1da04e4ae61909895535c641787933b3b22a9ffc data\testing_mod\loot_tables\blocks\crystal_button.json
 4ddc269dcfaa06fc76886c7cfb48778be4a4ca25 data\testing_mod\loot_tables\blocks\crystal_block.json
 1da04e4ae61909895535c641787933b3b22a9ffc data\testing_mod\loot_tables\blocks\crystal_wall.json
+ce400493a17a8a7612b236854ffbd123dc4ada66 data\testing_mod\loot_tables\blocks\reactor_core.json
 1da04e4ae61909895535c641787933b3b22a9ffc data\testing_mod\loot_tables\blocks\crystal_slab.json
 82a750e6c4eccc37db9ae1f8d925236927ae62db data\testing_mod\loot_tables\blocks\crystal_stairs.json

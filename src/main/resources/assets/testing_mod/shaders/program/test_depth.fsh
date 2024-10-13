@@ -27,6 +27,7 @@ void main() {
     float y3 = texture2D(DiffuseSampler, texCoord).b;
 
     vec4 color = vec4((x1-y1)*50,(x2-y2)*50,(x3-y3)*50,1);
-    gl_FragColor = vec4(texture2D(DepthBuffer, texCoord).r,texture2D(DepthBuffer, texCoord).g,texture2D(DepthBuffer, texCoord).b,texture2D(DepthBuffer, texCoord).a);
+   //gl_FragColor = vec4(texture2D(DepthBuffer, texCoord).r,texture2D(DepthBuffer, texCoord).g,texture2D(DepthBuffer, texCoord).b,texture2D(DepthBuffer, texCoord).a);
    //gl_FragColor = texture2D(DepthBuffer, texCoord);
+   gl_FragColor = vec4(depth,depth,depth,0.5);
 }

@@ -1,5 +1,5 @@
-// 1.20.4	2024-09-30T18:07:49.9807917	Testing Mod/Tags for minecraft:block
+// 1.20.4	2024-10-11T23:29:59.6489199	Testing Mod/Tags for minecraft:block
 d809884921ef782c320565cb34d4546c4ebb8c0b data\minecraft\tags\blocks\walls.json
 93141b32d9f93274634868de70b77d8ce3133fa9 data\testing_mod\tags\blocks\vulnerable_to_magic.json
-4a5131a4674511d6cb51f09ef7235fb16f2c8428 data\minecraft\tags\blocks\mineable\pickaxe.json
-4a5131a4674511d6cb51f09ef7235fb16f2c8428 data\minecraft\tags\blocks\needs_iron_tool.json
+9e8012535c5d7206b3656fbd8f917c4baafd27e4 data\minecraft\tags\blocks\mineable\pickaxe.json
+9e8012535c5d7206b3656fbd8f917c4baafd27e4 data\minecraft\tags\blocks\needs_iron_tool.json

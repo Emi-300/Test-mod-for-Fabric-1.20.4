@@ -110,10 +110,6 @@ public class LaserBlockEntity extends BlockEntity implements ExtendedScreenHandl
         return inventory;
     }
 
-    public ItemStack getRenderStack() {
-        return this.getStack(INPUT_SLOT);
-    }
-
     @Override
     public void markDirty() {
         world.updateListeners(pos, getCachedState(), getCachedState(), 3);

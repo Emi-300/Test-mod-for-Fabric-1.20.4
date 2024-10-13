@@ -13,6 +13,10 @@ public class ModScreenHandlers {
             Registry.register(Registries.SCREEN_HANDLER,new Identifier(Testing_mod.MOD_ID,"laser_screen"),
                     new ExtendedScreenHandlerType<>(LaserBlockScreenHandler::new));
 
+    public static final ScreenHandlerType<ReactorCoreScreenHandler> REACTOR_CORE_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER,new Identifier(Testing_mod.MOD_ID,"reactor_core_screen"),
+                    new ExtendedScreenHandlerType<>(ReactorCoreScreenHandler::new));
+
     public static void registerScreenHandlers(){
         Testing_mod.LOGGER.info("Registering screen handlers for " + Testing_mod.MOD_ID);
     }

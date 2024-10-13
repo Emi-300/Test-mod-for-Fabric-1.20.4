@@ -6,6 +6,7 @@
     "testing_mod:crystal_slab",
     "testing_mod:crystal_wall",
     "testing_mod:crystal_button",
-    "testing_mod:laser_block"
+    "testing_mod:laser_block",
+    "testing_mod:reactor_core"
   ]
 }

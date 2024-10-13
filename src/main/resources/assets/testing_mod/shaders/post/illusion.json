@@ -14,7 +14,7 @@
     {
       "name": "blit",
       "intarget": "swap",
-      "outtarget": "final"
+      "outtarget": "minecraft:main"
     }
   ]
 }

@@ -66,8 +66,9 @@ public class ModRenderLayers extends RenderLayer{
                 true,
                 RenderLayer.MultiPhaseParameters.builder()
                         .program(new RenderPhase.ShaderProgram(laser::getProgram))
-                        .transparency(TRANSLUCENT_TRANSPARENCY)
+                        .transparency(NO_TRANSPARENCY)
                         .depthTest(RenderPhase.LEQUAL_DEPTH_TEST)
+                        .writeMaskState(WriteMaskState.DEPTH_MASK)
                         .target(TRANSLUCENT_TARGET)
                         .lightmap(ENABLE_LIGHTMAP)
                         .overlay(ENABLE_OVERLAY_COLOR)
